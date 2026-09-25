@@ -2,7 +2,7 @@
 
 PWA hermana de Adaptive English para automatizar los 50 phrasal verbs B2 prioritarios.
 
-## v0.2.0
+## v0.3.0
 
 - interfaz heredada directamente de Adaptive English 3.20
 - misma escala tipográfica, HUD, botones 2×2, contador, resultados y navegación
