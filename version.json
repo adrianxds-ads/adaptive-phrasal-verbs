@@ -1,1 +1,1 @@
-{"version":"0.1.0","app":"adaptive-phrasal-verbs","bank":50,"session_size":15,"time_limit_seconds":15}
+{"version":"0.2.0","app":"adaptive-phrasal-verbs","bank":50,"session_size":15,"time_limit_seconds":10,"ui_base":"adaptive-english-v3.20","language":"english-only"}
