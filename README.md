@@ -1,19 +1,22 @@
 # Adaptive Phrasal Verbs
 
-PWA hermana de Adaptive English para automatizar los 50 phrasal verbs B2 prioritarios.
+PWA hermana de Adaptive English para automatizar 120 phrasal verbs prioritarios mediante repetición rápida.
 
-## v0.3.0
+## v0.4.0
 
-- interfaz heredada directamente de Adaptive English 3.20
-- misma escala tipográfica, HUD, botones 2×2, contador, resultados y navegación
+- interfaz y audio conservados del modelo Adaptive English
 - 15 preguntas por nivel
-- reloj fijo de 10 segundos
+- reloj fijo de 15 segundos
+- banco ampliado de 50 a 120 phrasal verbs
+- contextos ultracortos: máximo 7 palabras
+- modo meaning reducido a reconocimiento instantáneo
+- paraphrases recortadas para lectura rápida
+- cuatro opciones por pregunta con un banco amplio de distractores
+- distractores progresivos: mismo verbo base, misma familia semántica, partícula y confusiones reales
+- a mayor nivel, menor ventana de distractores y mayor similitud entre opciones
 - entrenamiento English-only
 - cinco modos: context, meaning, close contrast, particle y Cambridge paraphrase
-- distractores por familia verbal, proximidad semántica y confusiones reales
 - mastery exige exposición en varios tipos de ejercicio
-- flashcards English-only, weakest first
-- flashcard automática al terminar cada nivel
-- progreso local independiente y compatible con el progreso creado en v0.1
+- progreso local conservado mediante la misma clave de almacenamiento
 
 Publicación: https://adrianxds-ads.github.io/adaptive-phrasal-verbs/
