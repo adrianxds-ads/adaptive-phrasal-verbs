@@ -588,7 +588,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 
 <section id="endScreen" class="screen end hidden">
   <div class="panel">
-    <div class="resulttitle"><div class="kicker">LEVEL COMPLETE</div><h1 id="endScore">0/15</h1><p id="endSub"></p></div>
+    <div class="resulttitle"><div class="kicker">LEVEL COMPLETE</div><h1 id="endScore">0/15</h1><p id="endSub"></p></div><div id="achievementHost"></div>
     <div class="end-quick-actions"><button id="topContinueBtn" class="primary">NEXT LEVEL</button><button id="topHomeBtn" class="secondary">DASHBOARD · PORTADA</button><button id="topErrorsBtn" class="secondary hidden">REVIEW ERRORS</button></div>
     <div class="grid">
       <div class="card"><b id="eAvg">0.0s</b><span>Avg time</span></div>
@@ -601,7 +601,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
     <section id="levelLesson" class="level-lesson hidden"></section>
     <div class="section"><h3>Focus next</h3><div id="weakSkills"></div></div>
     <div class="actions"><button id="continueBtn" class="primary">NEXT LEVEL</button><button id="homeBtn" class="secondary">DASHBOARD · PORTADA</button><button id="errorsBtn" class="secondary hidden">REVIEW ERRORS</button></div>
-    <div class="footerline">Adaptive Phrasal Verbs · v0.3.0</div>
+    <div class="footerline">Adaptive Phrasal Verbs · v0.5.1</div>
   </div>
 </section><section id="errorsScreen" class="screen review hidden">
   <div class="panel">
@@ -613,10 +613,11 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 </section>
 </div>
 <div id="particles" class="particles" aria-hidden="true"></div>
-<script src="./adrian-visual-system.js?v=0.5.0"></script>
-<script src="./phrasals.js?v=0.5.0"></script>
-<script src="./app.js?v=0.5.0"></script>
-<script src="./adaptive-language-dashboard.js?v=0.5.0"></script>
-<script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js"));}</script>
+<script src="./adrian-visual-system.js?v=0.5.1"></script>
+<script src="./adrian-achievements.js?v=0.5.1"></script>
+<script src="./phrasals.js?v=0.5.1"></script>
+<script src="./app.js?v=0.5.1"></script>
+<script src="./adaptive-language-dashboard.js?v=0.5.1"></script>
+<script>if("serviceWorker" in navigator&&location.protocol.startsWith("http")){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js",{updateViaCache:"none"}).then(r=>r.update()).catch(()=>{}));}</script>
 </body>
 </html>
