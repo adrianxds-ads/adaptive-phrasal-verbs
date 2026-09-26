@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#10271d">
-<meta name="apv-version" content="0.4.0">
-<title>Adaptive Phrasal Verbs · B2 · v0.4.0</title>
+<meta name="apv-version" content="0.5.0">
+<title>Adaptive Phrasal Verbs · B2 · v0.5.0</title>
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <style>
@@ -482,17 +482,25 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 .ai-handoff-card{margin:12px 0 15px;padding:14px 15px;border-radius:14px;border:1px solid rgba(231,191,87,.28);background:linear-gradient(135deg,rgba(231,191,87,.10),rgba(var(--ai-rgb),.10));display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center}.ai-handoff-card span{display:block;font-size:12px;font-weight:950;letter-spacing:.1em;color:#d8c47f}.ai-handoff-card b{display:block;margin-top:4px;font-size:18px;line-height:1.2;color:#f5f0df}.ai-handoff-card small{display:block;margin-top:5px;font-size:12px;line-height:1.45;color:#9fb2a8}.ai-handoff-card.copied{border-color:rgba(130,230,169,.42);background:linear-gradient(135deg,rgba(72,164,101,.15),rgba(var(--ai-rgb),.08))}.ai-handoff-card.copied b{color:#b8f1cb}.ai-handoff-card button{min-width:150px}.error-session-handoff{margin:0 0 14px;padding:12px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08)}.error-session-handoff small{display:block;margin-top:7px;font-size:12px;line-height:1.45;color:#90a399}.coach-prompt-section>.primary{width:100%}#endScreen .learning-score-box{min-width:0}#endScreen .learning-score-box>div:first-child{min-width:0}#endScreen .learning-direction{min-width:0;max-width:48%;text-align:right;white-space:normal;overflow-wrap:anywhere}
 @media(max-width:520px){.ai-handoff-card{grid-template-columns:1fr;padding:13px}.ai-handoff-card button{width:100%}.ai-handoff-card span{font-size:11px}.ai-handoff-card b{font-size:17px}.ai-handoff-card small{font-size:12px}.error-session-handoff button{width:100%}#endScreen .learning-score-box{gap:8px}#endScreen .learning-direction{font-size:clamp(23px,7vw,30px);max-width:46%}}
 </style>
+<style id="apv-shell-parity">#startScreen #aldHomeScore{display:none!important}</style>
 </head>
 <body>
 <div class="app">
 <section id="startScreen" class="screen start">
   <div class="panel">
-    <div class="kicker">B2 · ADAPTIVE PHRASAL VERBS</div>
+    <div id="startKicker" class="kicker">CAMPAIGN 1 · ADAPTIVE PHRASAL VERBS</div>
     <h1 id="startLevel">LEVEL 1</h1>
     <p class="subtitle">Adaptive Phrasal Verbs · B2 Core</p>
+    <div class="ai-valuation-box hero-ai"><div><span>AI VALORATION</span><b id="startAiLevel">— / 15</b><small id="startAiConfidence">Adaptive estimate</small></div><em>AI</em></div>
     <div class="meta">120 phrasal verbs · 15 questions per level · fixed 15-second clock</div>
-    <div class="hero-progress"><div class="progress-label"><span>Coverage</span><strong id="coverageText">0 / 120</strong></div><div class="track"><div id="coverageFill" class="fill" style="width:0%"></div></div></div>
-    <div class="hero-progress"><div class="progress-label"><span>Mastery</span><strong id="masteryText">0%</strong></div><div class="track"><div id="masteryFill" class="fill mastery" style="width:0%"></div></div></div>
+    <div class="hero-progress">
+      <div class="progress-label"><span>Coverage</span><strong id="coverageText">0 / 120</strong></div>
+      <div class="track"><div id="coverageFill" class="fill" style="width:0%"></div></div>
+    </div>
+    <div class="hero-progress">
+      <div class="progress-label"><span>Mastery</span><strong id="masteryText">0%</strong></div>
+      <div class="track"><div id="masteryFill" class="fill mastery" style="width:0%"></div></div>
+    </div>
     <div class="grid">
       <div class="card"><b id="startRating">—</b><span>APV rating</span></div>
       <div class="card"><b id="startAccuracy">—</b><span>Recent accuracy</span></div>
@@ -503,16 +511,36 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
       <div class="card"><b id="startTotal">0</b><span>Total answers</span></div>
       <div class="card study-time-card"><b id="startStudyTime">0s</b><span>Active training time</span></div>
     </div>
-    <section id="startFocusPanel" class="focus-panel"></section>
-    <div id="campaignStatus" class="statusbox"></div>
-    <div class="actions"><button id="startBtn" class="primary">START</button></div>
-    <div class="dashboard-menu">
-      <button id="statsBtn" class="secondary menu-btn"><b>STATISTICS</b><span>Progress · weak pairs · mastery</span></button>
-      <button id="flashBtn" class="secondary menu-btn"><b>FLASHCARDS</b><span>English-only · weakest first</span></button>
+    <div class="start-phrase-grid">
+      <div class="card"><b id="startPhrasalsSeen">0</b><span>Phrasals seen</span></div>
+      <div class="card"><b id="startConfusionPairs">0</b><span>Confusion pairs</span></div>
     </div>
-    <div id="buildVersion" class="footerline">Adaptive Phrasal Verbs · v0.4.0</div>
+    <section id="startFocusPanel" class="focus-panel"></section>
+    <div class="peer-box"><div class="peer-head"><span>ADAPTIVE PHRASAL · PACE</span><b id="startPeerDelta" class="peer-delta neutral">—</b></div><div class="peer-values"><div><b id="paceRecent">—</b><span>Recent</span></div><div><b id="paceAll">—</b><span>All-time</span></div><div><b id="paceMastery">0</b><span>Mastery</span></div><div><b id="paceCoverage">0</b><span>Coverage</span></div><div><b id="paceAuto">0</b><span>Auto</span></div></div><small id="startPeerStatus">Building evidence · English-only adaptive practice</small></div>
+    <div id="readinessBox" class="next-campaign-box">
+      <div class="next-campaign-head"><div><span>B2 PHRASAL READINESS</span><b id="readinessScore">0%</b></div><em id="readinessStage">Building foundation</em></div>
+      <div class="track"><div id="readinessFill" class="fill" style="width:0%"></div></div>
+      <p id="readinessStatus">Target: full coverage and stable mastery across several exercise modes.</p>
+      <div class="campaign-eta-mini"><span>CORE STATUS</span><b id="readinessCore">0 / 120 mastered</b><small id="readinessEvidence">0 answers · 0 completed levels</small></div>
+    </div>
+    <div id="campaignStatus" class="statusbox"></div>
+    <div class="actions"><button id="startBtn" class="primary">START · LEVEL 1</button></div>
+    <div class="dashboard-menu">
+      <button id="statsBtn" class="secondary menu-btn"><b>STATISTICS</b><span>Graphs · progress · Skill League</span></button>
+      <button id="flashBtn" class="secondary menu-btn"><b>FLASHCARDS</b><span>Weakest first · English-only</span></button>
+    </div>
+    <div class="actions">
+      <button id="exportBtn" class="ghost small">Download progress backup</button>
+      <button id="importBtn" class="ghost small">Import progress</button>
+      <button id="resetBtn" class="ghost small">Reset</button>
+      <input id="importFile" type="file" accept="application/json">
+    </div>
+    <section class="daily-key-section"><div id="dailyKeyHost"></div></section>
+    <section class="growth-tree-section"><div id="growthTreeHost"></div></section>
+    <div id="buildVersion" class="footerline">ONLINE BUILD · v0.5.0</div>
   </div>
-</section><section id="statsScreen" class="screen dashboard-screen hidden">
+</section>
+<section id="statsScreen" class="screen dashboard-screen hidden">
   <div class="panel">
     <div class="top-dashboard-nav"><button id="statsTopDashboardBtn" class="ghost">DASHBOARD</button></div>
     <div class="resulttitle"><div class="kicker">DASHBOARD · v0.2</div><h1>Statistics</h1><p>Your phrasal-verb learning snapshot.</p></div>
@@ -585,10 +613,10 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 </section>
 </div>
 <div id="particles" class="particles" aria-hidden="true"></div>
-<script src="./adrian-visual-system.js?v=0.4.0"></script>
-<script src="./phrasals.js?v=0.4.0"></script>
-<script src="./app.js?v=0.4.0"></script>
-<script src="./adaptive-language-dashboard.js?v=0.4.0"></script>
+<script src="./adrian-visual-system.js?v=0.5.0"></script>
+<script src="./phrasals.js?v=0.5.0"></script>
+<script src="./app.js?v=0.5.0"></script>
+<script src="./adaptive-language-dashboard.js?v=0.5.0"></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js"));}</script>
 </body>
 </html>
