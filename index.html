@@ -491,6 +491,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
   <div class="panel">
     <div id="startKicker" class="kicker">CAMPAIGN 1 · ADAPTIVE PHRASAL VERBS</div>
     <h1 id="startLevel">LEVEL 1</h1>
+    <div id="startMedals" class="medal-summary-host"></div>
     <p class="subtitle">Adaptive Phrasal Verbs · B2 Core</p>
     <div class="ai-valuation-box hero-ai"><div><span>AI VALORATION</span><b id="startAiLevel">— / 15</b><small id="startAiConfidence">Adaptive estimate</small></div><em>AI</em></div>
     <div class="meta">120 phrasal verbs · 15 questions per level · fixed 15-second clock</div>
@@ -525,7 +526,6 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
       <div class="campaign-eta-mini"><span>CORE STATUS</span><b id="readinessCore">0 / 120 mastered</b><small id="readinessEvidence">0 answers · 0 completed levels</small></div>
     </div>
     <div id="campaignStatus" class="statusbox"></div>
-    <div id="startMedals" class="medal-summary-host"></div>
     <div class="actions"><button id="startBtn" class="primary">START · LEVEL 1</button></div>
     <div class="dashboard-menu">
       <button id="statsBtn" class="secondary menu-btn"><b>STATISTICS</b><span>Graphs · progress · Skill League</span></button>
@@ -590,7 +590,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 
 <section id="endScreen" class="screen end hidden">
   <div class="panel">
-    <div class="resulttitle"><div class="kicker">LEVEL COMPLETE</div><h1 id="endScore">0/15</h1><p id="endSub"></p><div id="endTarget" class="target-result hidden"></div><div id="endMedals" class="medal-summary-host"></div></div>
+    <div class="resulttitle"><div class="kicker">LEVEL COMPLETE</div><h1 id="endScore">0/15</h1><div id="endMedals" class="medal-summary-host"></div><p id="endSub"></p><div id="endTarget" class="target-result hidden"></div></div>
     <div class="end-quick-actions"><button id="topContinueBtn" class="primary">NEXT LEVEL</button><button id="topHomeBtn" class="secondary">DASHBOARD · PORTADA</button><button id="topErrorsBtn" class="secondary hidden">REVIEW ERRORS</button></div>
     <div class="grid">
       <div class="card"><b id="eAvg">0.0s</b><span>Avg time</span></div>
@@ -619,11 +619,11 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <section id="missionOverlay" class="mission-overlay hidden" aria-hidden="true"><div class="mission-card"><div id="missionBody"></div><div id="missionCount" class="mission-count"></div></div></section>
 <div id="particles" class="particles" aria-hidden="true"></div>
 <script src="./adrian-visual-system.js?v=0.6.0"></script>
-<script src="./adrian-achievements.js?v=0.6.0"></script>
+<script src="./adrian-achievements.js?v=0.6.1"></script>
 <script src="./phrasals.js?v=0.6.0"></script>
 <script src="./app.js?v=0.6.0"></script>
 <script src="./adaptive-language-dashboard.js?v=0.6.0"></script>
-<script src="https://adrianxds-ads.github.io/adrian-core/components/hub-nav.js?v=8"></script>
+<script src="https://adrianxds-ads.github.io/adrian-core/components/hub-nav.js?v=9"></script>
 <script>if("serviceWorker" in navigator&&location.protocol.startsWith("http")){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js",{updateViaCache:"none"}).then(r=>r.update()).catch(()=>{}));}</script>
 </body>
 </html>
