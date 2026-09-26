@@ -160,6 +160,7 @@ body.feedback-correct::after{background:rgba(50,210,126,.20)}body.feedback-wrong
 #gameScreen .feedback.ok.show,#gameScreen .feedback.no.show{animation:none}
 @media(max-width:520px){#gameScreen .feedback{min-height:70px;margin-top:5px;gap:4px}#gameScreen .feedback .appearance{font-size:19px;padding:4px 8px 5px}#gameScreen .feedback .feedback-label{font-size:27px;padding:6px 8px 7px}}
 </style>
+<style id="mission-canon-style">.mission-overlay{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 50% 30%,color-mix(in srgb,var(--mission-accent,#E7BF57) 24%,transparent),transparent 42%),linear-gradient(180deg,#101814 0%,#09100d 100%);color:#fff;pointer-events:auto}.mission-overlay.hidden{display:none!important}.mission-overlay.resolution.hit{background:radial-gradient(circle at 50% 34%,color-mix(in srgb,var(--mission-accent,#E7BF57) 34%,transparent),transparent 38%),linear-gradient(180deg,#30250c,#0e0d08 78%)}.mission-overlay.resolution.miss{background:radial-gradient(circle at 50% 34%,rgba(118,47,50,.38),transparent 40%),linear-gradient(180deg,#2b1718,#0d0b0b 78%)}.mission-card{width:min(92vw,520px);padding:30px 22px 26px;border:1px solid color-mix(in srgb,var(--mission-accent,#E7BF57) 58%,white 8%);border-radius:20px;background:rgba(8,14,11,.84);box-shadow:0 28px 80px rgba(0,0,0,.45),0 0 42px color-mix(in srgb,var(--mission-accent,#E7BF57) 18%,transparent);text-align:center}.mission-eyebrow{font-size:12px;font-weight:950;letter-spacing:.16em;color:var(--mission-accent,#E7BF57)}.mission-title{margin-top:13px;font-size:clamp(28px,8vw,44px);font-weight:950;letter-spacing:-.035em}.mission-score{margin:8px 0 5px;font-size:clamp(58px,17vw,94px);line-height:.9;font-weight:950;color:#fff}.mission-score small{font-size:.32em;opacity:.74;margin-left:4px}.mission-targetline{font-size:18px;font-weight:900}.mission-targetline b{color:var(--mission-accent,#E7BF57)}.mission-meta{margin-top:13px;font-size:15px;font-weight:900;color:#dbe6df}.mission-rules{margin-top:6px;font-size:10px;letter-spacing:.14em;color:#91a39a;font-weight:900}.mission-count{margin-top:22px;font-size:clamp(72px,22vw,124px);line-height:.8;font-weight:950;color:var(--mission-accent,#E7BF57);text-shadow:0 0 30px color-mix(in srgb,var(--mission-accent,#E7BF57) 54%,transparent)}.mission-count.pop{animation:missionPop .32s cubic-bezier(.2,.9,.25,1.28)}.resolution .mission-count{font-size:clamp(31px,9vw,48px);letter-spacing:.10em;margin-top:20px}@keyframes missionPop{0%{transform:scale(.72);opacity:.35}70%{transform:scale(1.08);opacity:1}100%{transform:scale(1)}}@media(max-width:520px){.mission-card{padding:26px 16px 22px;border-radius:16px}.mission-meta{font-size:13px}.mission-targetline{font-size:16px}}@media(prefers-reduced-motion:reduce){.mission-count.pop{animation:none!important}}</style>
 <style id="v123-style">.leveltag .level-target{display:block;margin-top:4px;font-size:10px;letter-spacing:.05em;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:3px 6px;white-space:nowrap}.target-result{margin:10px auto 4px;width:min(360px,100%);display:grid;grid-template-columns:1fr auto;align-items:center;gap:3px 12px;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);text-align:left}.target-result span{font-size:13px;font-weight:950;letter-spacing:.08em}.target-result b{grid-row:1/3;grid-column:2;font-size:30px;line-height:1}.target-result small{font-size:10px;font-weight:900;letter-spacing:.08em}.target-result.hit{background:rgba(39,146,92,.18);border-color:rgba(130,230,169,.44);color:#a7f0c4}.target-result.miss{background:rgba(199,66,83,.18);border-color:rgba(255,125,142,.44);color:#ff9baa}@media(max-width:520px){.leveltag .level-target{font-size:9px;padding:3px 5px}.target-result{padding:9px 12px}.target-result b{font-size:28px}}</style>
 
 <style id="v124-style">
@@ -524,6 +525,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
       <div class="campaign-eta-mini"><span>CORE STATUS</span><b id="readinessCore">0 / 120 mastered</b><small id="readinessEvidence">0 answers · 0 completed levels</small></div>
     </div>
     <div id="campaignStatus" class="statusbox"></div>
+    <div id="startMedals" class="medal-summary-host"></div>
     <div class="actions"><button id="startBtn" class="primary">START · LEVEL 1</button></div>
     <div class="dashboard-menu">
       <button id="statsBtn" class="secondary menu-btn"><b>STATISTICS</b><span>Graphs · progress · Skill League</span></button>
@@ -588,7 +590,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 
 <section id="endScreen" class="screen end hidden">
   <div class="panel">
-    <div class="resulttitle"><div class="kicker">LEVEL COMPLETE</div><h1 id="endScore">0/15</h1><p id="endSub"></p></div><div id="achievementHost"></div>
+    <div class="resulttitle"><div class="kicker">LEVEL COMPLETE</div><h1 id="endScore">0/15</h1><p id="endSub"></p><div id="endTarget" class="target-result hidden"></div><div id="endMedals" class="medal-summary-host"></div></div><div id="achievementHost"></div>
     <div class="end-quick-actions"><button id="topContinueBtn" class="primary">NEXT LEVEL</button><button id="topHomeBtn" class="secondary">DASHBOARD · PORTADA</button><button id="topErrorsBtn" class="secondary hidden">REVIEW ERRORS</button></div>
     <div class="grid">
       <div class="card"><b id="eAvg">0.0s</b><span>Avg time</span></div>
@@ -601,7 +603,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
     <section id="levelLesson" class="level-lesson hidden"></section>
     <div class="section"><h3>Focus next</h3><div id="weakSkills"></div></div>
     <div class="actions"><button id="continueBtn" class="primary">NEXT LEVEL</button><button id="homeBtn" class="secondary">DASHBOARD · PORTADA</button><button id="errorsBtn" class="secondary hidden">REVIEW ERRORS</button></div>
-    <div class="footerline">Adaptive Phrasal Verbs · v0.5.1</div>
+    <div class="footerline">Adaptive Phrasal Verbs · v0.6.0</div>
   </div>
 </section><section id="errorsScreen" class="screen review hidden">
   <div class="panel">
@@ -612,13 +614,14 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
   </div>
 </section>
 </div>
+<section id="missionOverlay" class="mission-overlay hidden" aria-hidden="true"><div class="mission-card"><div id="missionBody"></div><div id="missionCount" class="mission-count"></div></div></section>
 <div id="particles" class="particles" aria-hidden="true"></div>
-<script src="./adrian-visual-system.js?v=0.5.1"></script>
-<script src="./adrian-achievements.js?v=0.5.1"></script>
-<script src="./phrasals.js?v=0.5.1"></script>
-<script src="./app.js?v=0.5.1"></script>
-<script src="./adaptive-language-dashboard.js?v=0.5.1"></script>
-<script src="https://adrianxds-ads.github.io/adrian-core/components/hub-nav.js?v=7"></script>
+<script src="./adrian-visual-system.js?v=0.6.0"></script>
+<script src="./adrian-achievements.js?v=0.6.0"></script>
+<script src="./phrasals.js?v=0.6.0"></script>
+<script src="./app.js?v=0.6.0"></script>
+<script src="./adaptive-language-dashboard.js?v=0.6.0"></script>
+<script src="https://adrianxds-ads.github.io/adrian-core/components/hub-nav.js?v=8"></script>
 <script>if("serviceWorker" in navigator&&location.protocol.startsWith("http")){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js",{updateViaCache:"none"}).then(r=>r.update()).catch(()=>{}));}</script>
 </body>
 </html>
