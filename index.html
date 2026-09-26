@@ -590,7 +590,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 
 <section id="endScreen" class="screen end hidden">
   <div class="panel">
-    <div class="resulttitle"><div class="kicker">LEVEL COMPLETE</div><h1 id="endScore">0/15</h1><p id="endSub"></p><div id="endTarget" class="target-result hidden"></div><div id="endMedals" class="medal-summary-host"></div></div><div id="achievementHost"></div>
+    <div class="resulttitle"><div class="kicker">LEVEL COMPLETE</div><h1 id="endScore">0/15</h1><p id="endSub"></p><div id="endTarget" class="target-result hidden"></div><div id="endMedals" class="medal-summary-host"></div></div>
     <div class="end-quick-actions"><button id="topContinueBtn" class="primary">NEXT LEVEL</button><button id="topHomeBtn" class="secondary">DASHBOARD · PORTADA</button><button id="topErrorsBtn" class="secondary hidden">REVIEW ERRORS</button></div>
     <div class="grid">
       <div class="card"><b id="eAvg">0.0s</b><span>Avg time</span></div>
@@ -600,6 +600,8 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
       <div class="card"><b id="eMastery">0%</b><span>Mastery</span></div>
       <div class="card"><b id="eMastered">0/50</b><span>Phrasals mastered</span></div>
     </div>
+    <div class="learning-score-box"><div><span>LEARNING SCORE</span><b id="pvLearningScore">—</b><small>Long-term curve · same Adaptive scale</small></div><div id="pvLearningDirection" class="learning-direction neutral">→</div></div>
+    <div class="charts stats-charts"><div class="section"><h3>Correct answers · /15</h3><div id="pvEndScoreChart"></div></div><div class="section learning-trend"><h3>Learning Curve · long-term</h3><div id="pvEndLearningChart"></div></div></div>
     <section id="levelLesson" class="level-lesson hidden"></section>
     <div class="section"><h3>Focus next</h3><div id="weakSkills"></div></div>
     <div class="actions"><button id="continueBtn" class="primary">NEXT LEVEL</button><button id="homeBtn" class="secondary">DASHBOARD · PORTADA</button><button id="errorsBtn" class="secondary hidden">REVIEW ERRORS</button></div>
