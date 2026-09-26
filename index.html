@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#10271d">
 <meta name="apv-version" content="0.5.0">
-<title>Adaptive Phrasal Verbs · B2 · v0.7.0</title>
+<title>Adaptive Phrasal Verbs · B2 · v0.8.0</title>
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <style>
@@ -484,6 +484,12 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 @media(max-width:520px){.ai-handoff-card{grid-template-columns:1fr;padding:13px}.ai-handoff-card button{width:100%}.ai-handoff-card span{font-size:11px}.ai-handoff-card b{font-size:17px}.ai-handoff-card small{font-size:12px}.error-session-handoff button{width:100%}#endScreen .learning-score-box{gap:8px}#endScreen .learning-direction{font-size:clamp(23px,7vw,30px);max-width:46%}}
 </style>
 <style id="apv-shell-parity">#startScreen #aldHomeScore{display:none!important}</style>
+<style id="dynamic-answer-palette">
+.answer.option-c1:not(.good):not(.bad){background:#665a3c}
+.answer.option-c2:not(.good):not(.bad){background:#3f6360}
+.answer.option-c3:not(.good):not(.bad){background:#50617c}
+.answer.option-c4:not(.good):not(.bad){background:#6b5366}
+</style>
 </head>
 <body>
 <div class="app">
@@ -621,7 +627,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <script src="./adrian-visual-system.js?v=0.6.0"></script>
 <script src="./adrian-achievements.js?v=0.6.2"></script>
 <script src="./phrasals.js?v=0.6.0"></script>
-<script src="./app.js?v=0.7.0"></script>
+<script src="./app.js?v=0.8.0"></script>
 <script src="./adaptive-language-dashboard.js?v=0.6.0"></script>
 <script src="https://adrianxds-ads.github.io/adrian-core/components/hub-nav.js?v=9"></script>
 <script>if("serviceWorker" in navigator&&location.protocol.startsWith("http")){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js",{updateViaCache:"none"}).then(r=>r.update()).catch(()=>{}));}</script>
