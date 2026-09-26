@@ -1,4 +1,4 @@
-const APP_VERSION="0.9.0",STORAGE_KEY="adaptive_phrasal_verbs_v1",SESSION_SIZE=15,TIME_LIMIT=10;
+const APP_VERSION="0.9.1",STORAGE_KEY="adaptive_phrasal_verbs_v1",SESSION_SIZE=15,TIME_LIMIT=10;
 const BANK=window.PHRASAL_BANK||[],BY_ID=Object.fromEntries(BANK.map(x=>[x.id,x])),PERSONAL_PRIORITY=new Set(["split_up"]);
 const MODES=["context","meaning","contrast","particle","paraphrase"];
 const AVS_RANKS=window.ADRIAN_VISUAL_SYSTEM?.ranks||[];
@@ -85,7 +85,7 @@ function renderHome(){
   $("readinessStatus").textContent="Internal readiness: coverage "+coverage()+"% · mastery "+globalMastery()+"% · target 100% coverage + stable multi-mode mastery.";$("readinessBox").classList.toggle("ready",ready>=85);
   $("readinessCore").textContent=masteredN+" / "+BANK.length+" mastered";$("readinessEvidence").textContent=state.answers+" answers · "+state.sessions+" completed levels";
   const unseen=BANK.length-seen;$("campaignStatus").textContent=unseen?unseen+" unseen · 15 s fixed · short prompts · close distractors.":"All "+BANK.length+" exposed · distractors tighten as your level rises.";
-  $("startBtn").textContent=state.sessions?"CONTINUE · LEVEL "+state.level:"START · LEVEL "+state.level;$("buildVersion").textContent=(location.protocol.startsWith("http")?"ONLINE":"LOCAL")+" BUILD · v0.6.0 · BANK "+BANK.length;
+  $("startBtn").textContent=state.sessions?"CONTINUE · LEVEL "+state.level:"START · LEVEL "+state.level;$("buildVersion").textContent=(location.protocol.startsWith("http")?"ONLINE":"LOCAL")+" BUILD · v"+APP_VERSION+" · BANK "+BANK.length;
   if(rank){$("startAiLevel").style.color=AVS_TEXT_BANDS_15[rank-1];}paintText("coverageText",coverage()/100);paintFill("coverageFill",coverage()/100);paintText("masteryText",globalMastery()/100);paintFill("masteryFill",globalMastery()/100);paintText("startRating",rating()/100);if(recent!=null)paintText("startAccuracy",recent/100);if(avgHits()!=null)paintScore("startAllAccuracy",avgHits());paintText("startAuto",automaticPct()/100);paintText("startMastered",masteredN/BANK.length);paintText("readinessScore",ready/100);paintFill("readinessFill",ready/100);
   renderDailyPhrasal();renderGrowthTree();renderMedalSummary();if(window.AdaptiveLanguageDashboard)window.AdaptiveLanguageDashboard.refresh();
 }
