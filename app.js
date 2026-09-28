@@ -1,4 +1,4 @@
-const APP_VERSION="0.10.0",STORAGE_KEY="adaptive_phrasal_verbs_v1",SESSION_SIZE=15,TIME_LIMIT=10;
+const APP_VERSION="0.11.0",STORAGE_KEY="adaptive_phrasal_verbs_v1",SESSION_SIZE=15,TIME_LIMIT=10;
 const BANK=window.PHRASAL_BANK||[],BY_ID=Object.fromEntries(BANK.map(x=>[x.id,x])),PERSONAL_PRIORITY=new Set(["split_up"]);
 const MODES=["context","meaning","contrast","particle","paraphrase"];
 const AVS_RANKS=window.ADRIAN_VISUAL_SYSTEM?.ranks||[];
