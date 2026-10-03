@@ -1,5 +1,5 @@
 const CACHE_PREFIX="apv-";
-const CACHE='apv-v0.11.4-loadfix3';
+const CACHE='apv-v0.11.4-loadfix4';
 const ASSETS=["./","./index.html","./language-points.js","./hub-path-game.js","./app.js","./phrasals.js","./adrian-visual-system.js","./adrian-achievements.js","./adaptive-language-dashboard.js","./manifest.webmanifest","./icon.svg"];
 const CORE_RE=/\.(?:html|js|css|json|webmanifest)$/i;
 function withTimeout(req,ms,init={}){const c=new AbortController(),t=setTimeout(()=>c.abort(),ms);return fetch(req,{...init,signal:c.signal}).finally(()=>clearTimeout(t));}
