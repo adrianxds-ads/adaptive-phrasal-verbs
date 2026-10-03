@@ -1,9 +1,11 @@
 {
-  "version": "0.11.5",
+  "version": "0.11.6",
   "app": "adaptive-phrasal-verbs",
   "bank": 120,
   "session_size": 15,
   "time_limit_seconds": 15,
+  "prethink_seconds": 4,
+  "question_flow": "hybrid-direct-and-retrieval-first",
   "ui_base": "adaptive-english-v3.22",
   "language": "english-only",
   "shared_dashboard": "adaptive-language-dashboard",
