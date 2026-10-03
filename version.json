@@ -1,1 +1,13 @@
-{"version":"0.11.1","app":"adaptive-phrasal-verbs","bank":120,"session_size":15,"time_limit_seconds":15,"ui_base":"adaptive-english-v3.22","language":"english-only","shared_dashboard":"adaptive-language-dashboard","achievements":"persistent-blue13-violet14-gold15","growth":"cumulative-completed-levels","adaptive_difficulty":"1-15-separate"}
+{
+  "version": "0.11.5",
+  "app": "adaptive-phrasal-verbs",
+  "bank": 120,
+  "session_size": 15,
+  "time_limit_seconds": 15,
+  "ui_base": "adaptive-english-v3.22",
+  "language": "english-only",
+  "shared_dashboard": "adaptive-language-dashboard",
+  "achievements": "persistent-blue13-violet14-gold15",
+  "growth": "cumulative-completed-levels",
+  "adaptive_difficulty": "1-15-separate"
+}
