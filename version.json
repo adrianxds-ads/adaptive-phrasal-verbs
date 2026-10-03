@@ -1,15 +1,17 @@
 {
-  "version": "0.11.6",
+  "version": "0.11.7",
   "app": "adaptive-phrasal-verbs",
   "bank": 120,
   "session_size": 15,
   "time_limit_seconds": 15,
   "prethink_seconds": 4,
-  "question_flow": "hybrid-direct-and-retrieval-first",
+  "question_flow": "hybrid-direct-recall-and-precision",
   "ui_base": "adaptive-english-v3.22",
   "language": "english-only",
   "shared_dashboard": "adaptive-language-dashboard",
   "achievements": "persistent-blue13-violet14-gold15",
   "growth": "cumulative-completed-levels",
-  "adaptive_difficulty": "1-15-separate"
+  "adaptive_difficulty": "1-15-separate",
+  "precision_bank": 30,
+  "precision_rule": "curated-single-target-contexts"
 }
