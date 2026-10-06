@@ -8,8 +8,8 @@
 <meta name="theme-color" content="#10271d">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apv-version" content="0.11.8">
-<title>Adaptive Phrasal Verbs Â· B2 Â· v0.11.8</title>
+<meta name="apv-version" content="0.12.0">
+<title>Adaptive Phrasal Verbs Â· B2 Â· v0.12.0</title>
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <style>
@@ -553,10 +553,6 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
       <div class="card"><b id="startTotal">0</b><span>Total answers</span></div>
       <div class="card study-time-card"><b id="startStudyTime">0s</b><span>Active training time</span></div>
     </div>
-    <div class="start-phrase-grid">
-      <div class="card"><b id="startPhrasalsSeen">0</b><span>Phrasals seen</span></div>
-      <div class="card"><b id="startConfusionPairs">0</b><span>Confusion pairs</span></div>
-    </div>
     <section id="startFocusPanel" class="focus-panel"></section>
     <div class="peer-box"><div class="peer-head"><span>ADAPTIVE PHRASAL Â· PACE</span><b id="startPeerDelta" class="peer-delta neutral">â€”</b></div><div class="peer-values"><div><b id="paceRecent">â€”</b><span>Recent</span></div><div><b id="paceAll">â€”</b><span>All-time</span></div><div><b id="paceMastery">0</b><span>Mastery</span></div><div><b id="paceCoverage">0</b><span>Coverage</span></div><div><b id="paceAuto">0</b><span>Auto</span></div></div><small id="startPeerStatus">Building evidence Â· English-only adaptive practice</small></div>
     <div id="readinessBox" class="next-campaign-box">
@@ -571,6 +567,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
     <div class="dashboard-menu">
       <button id="statsBtn" class="secondary menu-btn"><b>STATISTICS</b><span>Graphs Â· progress Â· Skill League</span></button>
       <button id="flashBtn" class="secondary menu-btn"><b>FLASHCARDS</b><span>Weakest first Â· English-only</span></button>
+      <button id="globalJsonBtn" class="secondary menu-btn"><b>PROGRESS JSON</b><span>Global state · levels · errors · skills</span></button>
     </div>
     <div class="actions">
       <button id="exportBtn" class="ghost small">Download progress backup</button>
@@ -632,21 +629,19 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <section id="endScreen" class="screen end hidden">
   <div class="panel">
     <div class="resulttitle"><div class="kicker">LEVEL COMPLETE</div><h1 id="endScore">0/15</h1><div id="endMedals" class="medal-summary-host"></div><p id="endSub"></p><div id="endTarget" class="target-result hidden"></div></div>
-    <div class="end-quick-actions"><button id="topContinueBtn" class="primary">NEXT LEVEL</button><button id="topHomeBtn" class="secondary">DASHBOARD Â· PORTADA</button><button id="topErrorsBtn" class="secondary hidden">REVIEW ERRORS</button></div>
+    <div class="end-quick-actions"><button id="topContinueBtn" class="primary">NEXT LEVEL</button><button id="topHomeBtn" class="secondary">DASHBOARD · PORTADA</button><button id="topErrorsBtn" class="secondary hidden">REVIEW ERRORS</button></div>
+    <div id="endAiHandoff" class="ai-handoff-card" aria-live="polite"><div><span>PROGRESS JSON · OPTIONAL</span><b>PROGRESS JSON READY · OPTIONAL</b><small>Global progress + latest level + errors + phrasal mastery.</small></div><button id="endCopyHandoffBtn" class="secondary">COPY PROGRESS JSON</button></div>
+    <div class="ai-valuation-box"><div><span>AI VALORATION</span><b id="endAiLevel">— / 15</b><small id="endAiConfidence">Adaptive estimate</small></div><em>AI</em></div>
     <div class="grid">
-      <div class="card"><b id="eAvg">0.0s</b><span>Avg time</span></div>
-      <div class="card"><b id="eAuto">0%</b><span>Automatic</span></div>
-      <div class="card"><b id="eRating">0</b><span>APV rating</span></div>
-      <div class="card"><b id="eCoverage">0%</b><span>Coverage</span></div>
-      <div class="card"><b id="eMastery">0%</b><span>Mastery</span></div>
-      <div class="card"><b id="eMastered">0/50</b><span>Phrasals mastered</span></div>
+      <div class="card"><b id="eAvg">0.0s</b><span>Avg time</span></div><div class="card"><b id="eAuto">0%</b><span>Automatic</span></div><div class="card"><b id="eRating">0</b><span>APV rating</span></div><div class="card"><b id="eCoverage">0%</b><span>Coverage</span></div><div class="card"><b id="eMastery">0%</b><span>Mastery</span></div><div class="card"><b id="eMastered">0/120</b><span>Phrasals mastered</span></div>
     </div>
-    <div class="learning-score-box"><div><span>LEARNING SCORE</span><b id="pvLearningScore">â€”</b><small>Long-term curve Â· same Adaptive scale</small></div><div id="pvLearningDirection" class="learning-direction neutral">â†’</div></div>
-    <div class="charts stats-charts"><div class="section"><h3>Correct answers Â· /15</h3><div id="pvEndScoreChart"></div></div><div class="section learning-trend"><h3>Learning Curve Â· long-term</h3><div id="pvEndLearningChart"></div></div></div>
+    <div class="learning-score-box"><div><span>LEARNING SCORE</span><b id="pvLearningScore">—</b><small>Long-term curve · same Adaptive scale</small></div><div id="pvLearningDirection" class="learning-direction neutral">—</div></div>
+    <div class="charts stats-charts"><div class="section"><h3>Correct answers · /15</h3><div id="pvEndScoreChart"></div></div><div class="section learning-trend"><h3>Learning Curve · long-term</h3><div id="pvEndLearningChart"></div></div></div>
     <section id="levelLesson" class="level-lesson hidden"></section>
-    <div class="section"><h3>Focus next</h3><div id="weakSkills"></div></div>
-    <div class="actions"><button id="continueBtn" class="primary">NEXT LEVEL</button><button id="homeBtn" class="secondary">DASHBOARD Â· PORTADA</button><button id="errorsBtn" class="secondary hidden">REVIEW ERRORS</button></div>
-    <div class="footerline">Adaptive Phrasal Verbs Â· v0.11.8</div>
+    <div class="section"><h3>Skill League · current ranking</h3><div id="weakSkills"></div></div>
+    <div class="ai-legend-wrap"><span>CÓDIGO DE COLOR · 1 BAJO → 15 MÁXIMO</span><div id="aiLegend" class="ai-legend"></div></div>
+    <div class="actions"><button id="continueBtn" class="primary">NEXT LEVEL</button><button id="homeBtn" class="secondary">DASHBOARD · PORTADA</button><button id="errorsBtn" class="secondary hidden">REVIEW ERRORS</button></div>
+    <div class="footerline">Adaptive Phrasal Verbs · v0.12.0</div>
   </div>
 </section><section id="errorsScreen" class="screen review hidden">
   <div class="panel">
@@ -665,10 +660,10 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <script>window.LANGUAGE_POINTS_CONFIG={appId:"phrasal",timeLimit:15};</script>
 <script src="./language-points.js?v=1.2.0"></script>
 <script src="https://adrianxds-ads.github.io/adrian-core/components/hub-path-game.js?v=core-20261004b"></script>
-<script src="./app.js?v=0.11.8-oca2"></script>
+<script src="./app.js?v=0.12.0-parity"></script>
 <script src="./adaptive-language-dashboard.js?v=0.6.0"></script>
 <script src="./performance-adapter.js?v=1.0.0-20261006"></script><script src="https://adrianxds-ads.github.io/adrian-core/components/hub-nav.js?v=9"></script>
-<script>if("serviceWorker" in navigator&&location.protocol.startsWith("http")){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js?v=performance-20261006b",{updateViaCache:"none"}).then(r=>r.update()).catch(()=>{}));}</script>
+<script>if("serviceWorker" in navigator&&location.protocol.startsWith("http")){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js?v=phrasal-parity-20261006",{updateViaCache:"none"}).then(r=>r.update()).catch(()=>{}));}</script>
 
 </body>
 </html>
