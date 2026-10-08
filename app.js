@@ -1,4 +1,4 @@
-const APP_VERSION="0.12.8",STORAGE_KEY="adaptive_phrasal_verbs_v1",READ_FIRST_KEY="adaptive_phrasal_read_first_v1",SESSION_SIZE=15,TIME_LIMIT=15,PRETHINK_SECONDS=4;
+const APP_VERSION="0.12.9",STORAGE_KEY="adaptive_phrasal_verbs_v1",READ_FIRST_KEY="adaptive_phrasal_read_first_v1",SESSION_SIZE=15,TIME_LIMIT=15,PRETHINK_SECONDS=4;
 const BANK=window.PHRASAL_BANK||[],BY_ID=Object.fromEntries(BANK.map(x=>[x.id,x])),PERSONAL_PRIORITY=new Set(["split_up"]);
 const MODES=["context","meaning","contrast","particle","paraphrase","precision"];
 const AVS_RANKS=window.ADRIAN_VISUAL_SYSTEM?.ranks||[];
@@ -44,7 +44,7 @@ cut_down_on:{text:"My doctor says I should ___ sugar rather than stop eating it 
 work_on:{text:"My pronunciation is weak, so I need to ___ it every day.",d:["work_out","go_over","carry_on"]}
 };
 const PRECISION_IDS=new Set(Object.keys(PRECISION_BANK));
-let state=loadState(),session=null,current=null,timerHandle=null,deadline=0,locked=false,questionPhase="answer",audioCtx=null,soundOn=true,lastTickShown=TIME_LIMIT+1,lastUrgentBeat=-1,flashQueue=[],flashIndex=0,flashRevealed=false;
+let state=loadState(),sessionStarting=false,session=null,current=null,timerHandle=null,deadline=0,locked=false,questionPhase="answer",audioCtx=null,soundOn=true,lastTickShown=TIME_LIMIT+1,lastUrgentBeat=-1,flashQueue=[],flashIndex=0,flashRevealed=false;
 const $=id=>document.getElementById(id),clamp=(n,a,b)=>Math.max(a,Math.min(b,n)),shuffle=a=>{const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;};
 function readFirstEnabled(){try{return localStorage.getItem(READ_FIRST_KEY)!=="0";}catch(e){return true;}}
 function renderReadFirstToggle(){const b=$("readFirstToggle"),n=$("readFirstNote");if(!b)return;const on=readFirstEnabled();b.setAttribute("aria-pressed",String(on));b.textContent=on?"MODO · LEER PRIMERO · SÍ":"MODO · TODO JUNTO · NORMAL";if(n)n.textContent=on?"Primero lees el enunciado; los 15 s empiezan cuando aparecen las respuestas.":"Pregunta y respuestas aparecen a la vez; los 15 s empiezan inmediatamente.";}
