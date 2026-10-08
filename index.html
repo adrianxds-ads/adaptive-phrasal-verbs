@@ -8,8 +8,8 @@
 <meta name="theme-color" content="#10271d">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apv-version" content="0.12.7">
-<title>Adaptive Phrasal Verbs · B2 · v0.12.7</title>
+<meta name="apv-version" content="0.12.8">
+<title>Adaptive Phrasal Verbs · B2 · v0.12.8</title>
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <style>
@@ -539,6 +539,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 #startScreen .home-details{margin:20px 0;border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:0 16px}
 #startScreen .home-details>summary{cursor:pointer;min-height:56px;display:flex;align-items:center;font-size:16px;font-weight:800;color:#f3f7f8}
 #startScreen .home-details[open]{padding-bottom:16px}
+#startScreen .rhythm-details{margin:14px 0}
 #startScreen .level-next-shortcut{display:none!important}
 #startScreen button:focus-visible,#startScreen summary:focus-visible{outline:3px solid #e7bf57!important;outline-offset:3px}
 @media(max-width:520px){#startScreen .panel{padding:20px 16px!important}#startScreen .dashboard-menu{grid-template-columns:1fr!important}#startScreen .primary{min-width:0!important;width:100%}}
@@ -583,7 +584,9 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
       <div class="card study-time-card"><b id="startStudyTime">0s</b><span>Active training time</span></div>
     </div>
     <section id="startFocusPanel" class="focus-panel"></section>
+    <details class="home-details rhythm-details"><summary>Ver métricas de ritmo</summary>
     <div class="peer-box"><div class="peer-head"><span>ADAPTIVE PHRASAL · PACE</span><b id="startPeerDelta" class="peer-delta neutral">—</b></div><div class="peer-values"><div><b id="paceRecent">—</b><span>Recent</span></div><div><b id="paceAll">—</b><span>All-time</span></div><div><b id="paceMastery">0</b><span>Mastery</span></div><div><b id="paceCoverage">0</b><span>Coverage</span></div><div><b id="paceAuto">0</b><span>Auto</span></div></div><small id="startPeerStatus">Building evidence · English-only adaptive practice</small></div>
+    </details>
     <div id="readinessBox" class="next-campaign-box">
       <div class="next-campaign-head"><div><span>B2 PHRASAL READINESS</span><b id="readinessScore">0%</b></div><em id="readinessStage">Building foundation</em></div>
       <div class="track"><div id="readinessFill" class="fill" style="width:0%"></div></div>
@@ -600,7 +603,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
     </div>
     <section class="daily-key-section"><div id="dailyKeyHost"></div></section>
     <section class="growth-tree-section"><div id="growthTreeHost"></div></section>
-    <div id="buildVersion" class="footerline">ONLINE BUILD · v0.5.0</div>
+    <div id="buildVersion" class="footerline">ONLINE BUILD · v0.12.8</div>
   </div>
 </section>
 <section id="statsScreen" class="screen dashboard-screen hidden">
@@ -664,7 +667,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
     <div class="section"><h3>Skill League · current ranking</h3><div id="weakSkills"></div></div>
     <div class="ai-legend-wrap"><span>CÓDIGO DE COLOR · 1 BAJO → 15 MÁXIMO</span><div id="aiLegend" class="ai-legend"></div></div>
     <div class="actions"><button id="continueBtn" class="primary">NEXT LEVEL</button><button id="homeBtn" class="secondary">DASHBOARD · PORTADA</button><button id="errorsBtn" class="secondary hidden">REVIEW ERRORS</button></div>
-    <div class="footerline">Adaptive Phrasal Verbs · v0.12.7</div>
+    <div class="footerline">Adaptive Phrasal Verbs · v0.12.8</div>
   </div>
 </section><section id="errorsScreen" class="screen review hidden">
   <div class="panel">
@@ -682,9 +685,9 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <script src="https://adrianxds-ads.github.io/adrian-core/components/adrian-performance.js?v=1.1.0"></script>
 <script src="./phrasals.js?v=0.6.0"></script>
 <script>window.LANGUAGE_POINTS_CONFIG={appId:"phrasal",timeLimit:15};</script>
-<script src="./language-points.js?v=0.12.7"></script>
+<script src="./language-points.js?v=0.12.8"></script>
 
-<script src="./app.js?v=0.12.7-parity"></script>
+<script src="./app.js?v=0.12.8-parity"></script>
 <script src="./adaptive-language-dashboard.js?v=0.6.0"></script>
 <script src="./performance-adapter.js?v=1.1.0"></script><script src="https://adrianxds-ads.github.io/adrian-core/components/hub-nav.js?v=10-0d4fa97"></script>
 <script>if("serviceWorker" in navigator&&location.protocol.startsWith("http")){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js?v=phrasal-parity-20261006",{updateViaCache:"none"}).then(r=>r.update()).catch(()=>{}));}</script>
