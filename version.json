@@ -1,5 +1,5 @@
 {
-  "version": "0.12.4",
+  "version": "0.12.5",
   "app": "adaptive-phrasal-verbs",
   "bank": 120,
   "session_size": 15,
@@ -15,5 +15,6 @@
   "precision_bank": 30,
   "precision_rule": "curated-single-target-contexts",
   "read_first_default": true,
-  "standard_mode_available": true
+  "standard_mode_available": true,
+  "build": "2026-10-08"
 }

@@ -1,4 +1,4 @@
-const APP_VERSION="0.12.4",STORAGE_KEY="adaptive_phrasal_verbs_v1",READ_FIRST_KEY="adaptive_phrasal_read_first_v1",SESSION_SIZE=15,TIME_LIMIT=15,PRETHINK_SECONDS=4;
+const APP_VERSION="0.12.5",STORAGE_KEY="adaptive_phrasal_verbs_v1",READ_FIRST_KEY="adaptive_phrasal_read_first_v1",SESSION_SIZE=15,TIME_LIMIT=15,PRETHINK_SECONDS=4;
 const BANK=window.PHRASAL_BANK||[],BY_ID=Object.fromEntries(BANK.map(x=>[x.id,x])),PERSONAL_PRIORITY=new Set(["split_up"]);
 const MODES=["context","meaning","contrast","particle","paraphrase","precision"];
 const AVS_RANKS=window.ADRIAN_VISUAL_SYSTEM?.ranks||[];
