@@ -1,7 +1,7 @@
 importScripts('./build-assets.js','./sw-integrity.js');
 const CACHE_PREFIX="apv-";
 const CACHE='apv-'+self.AdrianRelease.build;
-const ASSETS=['./learning-feedback.js','./quiz-polish.css','./progress-storage.js',"./","./index.html","./language-points.js","./app.js?v=0.12.0-parity","./performance-adapter.js?v=1.0.0-20261006","./phrasals.js?v=0.6.0","/adrian-core/design/adrian-visual-system.js","/adrian-core/components/adrian-achievements.js","/adrian-core/components/adrian-performance.js?v=1.0.1-20261006","./adaptive-language-dashboard.js?v=0.6.0","./manifest.webmanifest","./icon.svg"];
+const ASSETS=['./nucleo-game-theme.css','./learning-feedback.js','./quiz-polish.css','./progress-storage.js',"./","./index.html","./language-points.js","./app.js?v=0.12.0-parity","./performance-adapter.js?v=1.0.0-20261006","./phrasals.js?v=0.6.0","/adrian-core/design/adrian-visual-system.js","/adrian-core/components/adrian-achievements.js","/adrian-core/components/adrian-performance.js?v=1.0.1-20261006","./adaptive-language-dashboard.js?v=0.6.0","./manifest.webmanifest","./icon.svg"];
 const CORE_RE=/\.(?:html|js|css|json|webmanifest)$/i;
 function withTimeout(req,ms,init={}){const c=new AbortController(),t=setTimeout(()=>c.abort(),ms);return releaseFetch(req,{...init,signal:c.signal}).finally(()=>clearTimeout(t));}
 async function installCore(list){
