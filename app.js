@@ -1,4 +1,4 @@
-const APP_VERSION="0.13.6",STORAGE_KEY="adaptive_phrasal_verbs_v1",READ_FIRST_KEY="adaptive_phrasal_read_first_v1",SESSION_SIZE=15,TIME_LIMIT=15,PRETHINK_SECONDS=60;
+const APP_VERSION="0.13.7",STORAGE_KEY="adaptive_phrasal_verbs_v1",READ_FIRST_KEY="adaptive_phrasal_read_first_v1",SESSION_SIZE=15,TIME_LIMIT=15,PRETHINK_SECONDS=4;
 const BANK=window.PHRASAL_BANK||[],BY_ID=Object.fromEntries(BANK.map(x=>[x.id,x])),PERSONAL_PRIORITY=new Set(["split_up"]);
 const MODES=["context","meaning","contrast","particle","paraphrase","precision"];
 const AVS_RANKS=window.ADRIAN_VISUAL_SYSTEM?.ranks||[];
@@ -288,7 +288,7 @@ function revealPrethink(){
 }
 function beginPrethink(){
   NucleoReadFirstSkip.show('questionText',()=>{revealPrethink();tone(900,.028,.007,'sine');});
-  clearInterval(timerHandle);questionPhase="prethink";current.thinkKind=current.thinkKind||"recall";current.prethink=PRETHINK_SECONDS;current.prethinkStartedAt=Date.now();lastTickShown=PRETHINK_SECONDS+1;lastUrgentBeat=-1;$("gameScreen").classList.toggle("think-precision",current.thinkKind==="precision");$("gameScreen").classList.toggle("think-recall",current.thinkKind!=="precision");$("timer").classList.add("prethink");$("answers").classList.add("prethink-hidden");$("questionText")?.parentElement?.classList.add("prethink-question");renderQuestionMeta(true);deadline=Date.now()+PRETHINK_SECONDS*1000;renderSegments(PRETHINK_SECONDS,PRETHINK_SECONDS);tick();timerHandle=setInterval(tick,50);
+  clearInterval(timerHandle);questionPhase="prethink";current.thinkKind=current.thinkKind||"recall";current.prethink=PRETHINK_SECONDS;$("answers").dataset.nucleoReadSeconds=String(PRETHINK_SECONDS);current.prethinkStartedAt=Date.now();lastTickShown=PRETHINK_SECONDS+1;lastUrgentBeat=-1;$("gameScreen").classList.toggle("think-precision",current.thinkKind==="precision");$("gameScreen").classList.toggle("think-recall",current.thinkKind!=="precision");$("timer").classList.add("prethink");$("answers").classList.add("prethink-hidden");window.NucleoQuizBars?.refresh?.();$("questionText")?.parentElement?.classList.add("prethink-question");renderQuestionMeta(true);deadline=Date.now()+PRETHINK_SECONDS*1000;renderSegments(PRETHINK_SECONDS,PRETHINK_SECONDS);tick();timerHandle=setInterval(tick,50);
 }
 function nextQuestion(){
   QuizLearning.clear();
