@@ -53,3 +53,12 @@ Evidencia reproducible en el entorno Windows: `C:\Users\adria\AppData\Local\Temp
 - El service worker histórico se activó correctamente. Tras registrar una respuesta, la actualización estándar cambió el controlador y el caché sin perder el historial; el arranque offline funcionó.
 - Prueba compartida reproducible: `_repair_cloze_20261024/test-four-pwa-upgrade.py` (Playwright + Edge en contextos nuevos, servidor HTTP solo en 127.0.0.1; prueba conjunta: **4/4 PASS**). La salida distingue tres cambios completos de service worker y la recuperación de progreso de Grammar con instalación nueva.
 - No fusionado, no publicado ni comprobado en Pixel 10. No modifica las claves de progreso ni los bancos de preguntas. La sustitución de la caché antigua ya instalada de Grammar requiere comprobación posterior; ninguna prueba local certifica lo que ocurrirá en un dispositivo real.
+
+
+### 24/10/2026 · Publicación comprobada (0.13.20)
+
+- Integración en `main` por fast-forward, sin reescribir historial: `4b46b79`. Push a `origin/main` aceptado; GitHub Pages sirve desde `main` (raíz).
+- Verificación HTTP pública: `app.js`, `index.html`, `service-worker.js` y `build-assets.js` con HTTP 200 y SHA-256 idéntico a los archivos publicados previstos. Build de caché: `1554eb82ae628384`.
+- Verificación de uso: Edge en perfil **temporal y aislado**, navegación a `https://adrianxds-ads.github.io/adaptive-phrasal-verbs/`, instalación del service worker actualizado, recarga offline e inicio del quiz con cuatro respuestas (PASS; sin errores JS). La sincronización remota se bloqueó en las pruebas para no crear datos ficticios.
+- Transición histórica 0.13.19 → 0.13.20 probada con service worker antiguo activo.
+- Publicación y funcionamiento en navegador verificados; **no se ha verificado todavía el Pixel 10 ni una actualización física de una instalación previa**. No se alteraron claves ni registros de progreso de usuarios. No se modificaron Hub ni Core.
