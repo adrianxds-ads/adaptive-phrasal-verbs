@@ -28,3 +28,4 @@ self.addEventListener('fetch',e=>{
 
 // Hub Arena 2.0.1: fingerprint manifest corrected for Mobile First controller.
 // Study-level display era release 0.13.21 · 2026-10-31. Progress storage unchanged.
+// Accumulated completed-game level 0.13.22; no progress migration (2026-10-31).
