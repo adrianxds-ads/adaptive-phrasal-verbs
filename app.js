@@ -1,4 +1,4 @@
-const APP_VERSION="0.13.22",STORAGE_KEY="adaptive_phrasal_verbs_v1",READ_FIRST_KEY="adaptive_phrasal_read_first_v1",SESSION_SIZE=15,TIME_LIMIT=15,PRETHINK_SECONDS=4;
+const APP_VERSION="0.13.23",STORAGE_KEY="adaptive_phrasal_verbs_v1",READ_FIRST_KEY="adaptive_phrasal_read_first_v1",SESSION_SIZE=15,TIME_LIMIT=15,PRETHINK_SECONDS=4;
 const quizFlow=new window.QuizFlowController();
 const BANK=window.PHRASAL_BANK||[],BY_ID=Object.fromEntries(BANK.map(x=>[x.id,x])),PERSONAL_PRIORITY=new Set(["split_up"]);
 const MODES=["context","meaning","contrast","particle","paraphrase","precision"];
@@ -406,4 +406,20 @@ function guardedQuizInterval(fn,ms=50){
 window.QuizErgonomics.bind(()=>{
  if(!session)return null;
  const n=session.times.length,results=n?state.answerHistory.slice(-n).map(r=>!!r.ok):[],reading=questionPhase==='prethink';return {owner:session,questions:session.queue,results,index:session.index,total:SESSION_SIZE,limit:TIME_LIMIT,locked,reading,remaining:locked?TIME_LIMIT-(session.times.at(-1)||0):reading?TIME_LIMIT:(deadline-Date.now())/1000};
+});
+
+// App restored its own visible state: Sync recovery must update an idle UI immediately.
+window.addEventListener('adrian-sync-updated',()=>{
+  if(!state||!document.getElementById('gameScreen')?.classList.contains('hidden'))return;
+  Promise.resolve().then(async()=>{
+    const incoming=loadState();
+    const prev=state;
+    const s0=Math.max(0,Number(prev?.sessions)||0),a0=Math.max(0,Number(prev?.totalAttempts??prev?.answers)||0);
+    const s1=Math.max(0,Number(incoming?.sessions)||0),a1=Math.max(0,Number(incoming?.totalAttempts??incoming?.answers)||0);
+    const improved=s1>=s0&&a1>=a0&&(s1>s0||a1>a0);
+    const legacyRecovered=s0===0&&s1===0&&a0===0&&a1===0&&Number(incoming?.level)>Number(prev?.level);
+    if(!improved&&!legacyRecovered)return;
+    state=incoming;
+    renderHome();
+  }).catch(error=>console.error('Sync progress UI restore failed; stored records preserved',error));
 });
