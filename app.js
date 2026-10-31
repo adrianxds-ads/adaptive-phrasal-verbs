@@ -1,4 +1,4 @@
-const APP_VERSION="0.13.23",STORAGE_KEY="adaptive_phrasal_verbs_v1",READ_FIRST_KEY="adaptive_phrasal_read_first_v1",SESSION_SIZE=15,TIME_LIMIT=15,PRETHINK_SECONDS=4;
+const APP_VERSION="0.13.24",STORAGE_KEY="adaptive_phrasal_verbs_v1",READ_FIRST_KEY="adaptive_phrasal_read_first_v1",SESSION_SIZE=15,TIME_LIMIT=15,PRETHINK_SECONDS=4;
 const quizFlow=new window.QuizFlowController();
 const BANK=window.PHRASAL_BANK||[],BY_ID=Object.fromEntries(BANK.map(x=>[x.id,x])),PERSONAL_PRIORITY=new Set(["split_up"]);
 const MODES=["context","meaning","contrast","particle","paraphrase","precision"];
@@ -169,7 +169,7 @@ async function showLevelResolution(score,target,completedLevel){
 }
 
 function secondaryEffect(run){try{Promise.resolve(run()).catch(e=>console.warn("Secondary effect recovered",e));}catch(e){console.warn("Secondary effect recovered",e);}}
-async function startSession(){quizFlow.cancel();if(sessionStarting)return;sessionStarting=true;try{await settleUi(ensureAudio(),1000,"Audio start");await window.QuizErgonomics.ready;const target=adaptiveLevelTarget();session={queue:buildQueue(),index:0,correct:0,times:[],errors:[],started:Date.now(),snapshot:JSON.stringify(state),target,combo:0,bestCombo:0,recovered:0,masteredRewards:0,learningXp:0,lastReward:""};$("sessionLevel").innerHTML="L"+eraLevel()+"<small class=\"level-target\">TARGET "+target.toFixed(1)+"</small>";secondaryEffect(()=>window.LanguagePoints?.beginLevel?.({target,level:state.level}));await settleUi(showLevelIntro(target),4500,"Session intro");missionOverlay(false);showScreen("gameScreen");renderSegments(TIME_LIMIT);nextQuestion();}finally{sessionStarting=false;}}
+async function startSession(){if((Number(state?.sessions)||0)===0&&!window.AdrianSync?.baselineChecked?.()){window.AdrianSync?.status?.('⚠ Progreso sin recuperar: conecta Tailscale antes de jugar','blocked');alert('La partida no se iniciará con el progreso a cero y Sync sin verificar. Conecta Tailscale y vuelve a abrir el juego.');return;}quizFlow.cancel();if(sessionStarting)return;sessionStarting=true;try{await settleUi(ensureAudio(),1000,"Audio start");await window.QuizErgonomics.ready;const target=adaptiveLevelTarget();session={queue:buildQueue(),index:0,correct:0,times:[],errors:[],started:Date.now(),snapshot:JSON.stringify(state),target,combo:0,bestCombo:0,recovered:0,masteredRewards:0,learningXp:0,lastReward:""};$("sessionLevel").innerHTML="L"+eraLevel()+"<small class=\"level-target\">TARGET "+target.toFixed(1)+"</small>";secondaryEffect(()=>window.LanguagePoints?.beginLevel?.({target,level:state.level}));await settleUi(showLevelIntro(target),4500,"Session intro");missionOverlay(false);showScreen("gameScreen");renderSegments(TIME_LIMIT);nextQuestion();}finally{sessionStarting=false;}}
 function renderSegments(left=TIME_LIMIT,total=TIME_LIMIT){
   const host=$("segments");
   if(!host)return;
